@@ -2,22 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Films</title>
+    <title>Title</title>
 </head>
 <body>
-{% for director in directories %}
-    <a href="director/{{ director.id }}/film/">
-    <button>{{ director.name }}</button>
-    </a>
-{% endfor %}
-   <h1>All films</h1>
-    {% for film in film_list %}
+<h1>Director: {{ director.name }}</h1>
+   {% for film in director.film_list.all %}
         <a href="/films/{{ film.id }}/">
             <h3>Title: {{ film.title }}</h3>
         </a>
         <p>Author: {{ film.author }}</p>
         <p>Rating: {{ film.rating }}</p>
-
-    {% endfor %}
+   {% endfor %}
 </body>
 </html>

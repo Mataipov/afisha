@@ -1,5 +1,5 @@
 from django.shortcuts import render,Http404
-from .models import Film
+from .models import Film, Director
 import datetime
 
 # Create your views here.
@@ -17,7 +17,7 @@ def film_detail_view(request, id):
 def film_list_view(request):
     context = {
         'film_list': Film.objects.all(),
-        # 'categories': Category.objects.all()
+        'directories': Director.objects.all()
     }
     return render(request, 'films.html', context)
 
@@ -31,5 +31,12 @@ def date_now(request):
     }
     return render(request, 'date_now.html', context)
 
-
-
+def director_films(request, director_id):
+    try:
+        director = Director.objects.get(id=director_id)
+    except Director.DoesNotExist:
+        raise Http404('Director not found!')
+    context = {
+        'director': director
+    }
+    return render(request, 'director_films.html', context)
