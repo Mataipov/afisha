@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Films</title>
-</head>
-<body>
-{% for director in directories %}
-    <a href="director/{{ director.id }}/film/">
-    <button>{{ director.name }}</button>
-    </a>
-{% endfor %}
+{% extends 'base.html' %}
+
+{% block content %}
+{##}
+{#    <a href="/films/">#}
+{#    <button>ALL</button>#}
+{#    </a>#}
+{##}
+{#{% for director in directories %}#}
+{#    <a href="director/{{ director.id }}/film/">#}
+{#    <button>{{ director.name }}</button>#}
+{#    </a>#}
+{#{% endfor %}#}
    <h1>All films</h1>
     {% for film in film_list %}
         <a href="/films/{{ film.id }}/">
@@ -19,5 +20,4 @@
         <p>Rating: {{ film.rating }}</p>
 
     {% endfor %}
-</body>
-</html>
+{% endblock %}

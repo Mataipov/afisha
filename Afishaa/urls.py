@@ -20,8 +20,9 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about_us/', views.about_us),
+    path('', views.index_view),
     path('date_now/', views.date_now),
     path('films/', views.film_list_view),
     path('films/<int:id>/', views.film_detail_view),
-    path('films/director/<int:director_id>/film/', views.director_films),
+    path('director/<int:director_id>/film/', views.director_films),
 ]

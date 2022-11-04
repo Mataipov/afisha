@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
 <h1>Director: {{ director.name }}</h1>
    {% for film in director.film_list.all %}
         <a href="/films/{{ film.id }}/">
@@ -13,5 +12,4 @@
         <p>Author: {{ film.author }}</p>
         <p>Rating: {{ film.rating }}</p>
    {% endfor %}
-</body>
-</html>
+{% endblock %}

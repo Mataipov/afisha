@@ -5,7 +5,9 @@ import datetime
 # Create your views here.
 
 def film_detail_view(request, id):
-    context = {}
+    context = {
+        'directories': Director.objects.all()
+    }
     try:
         film = Film.objects.get(id=id)
     except Film.DoesNotExist:
@@ -37,6 +39,15 @@ def director_films(request, director_id):
     except Director.DoesNotExist:
         raise Http404('Director not found!')
     context = {
+        'directories': Director.objects.all(),
         'director': director
     }
     return render(request, 'director_films.html', context)
+
+
+def index_view(request):
+    context = {
+
+         'directories': Director.objects.all()
+    }
+    return render(request, 'index.html', context)
