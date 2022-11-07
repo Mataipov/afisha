@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from main import views
 
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about_us/', views.about_us),
@@ -25,4 +28,7 @@ urlpatterns = [
     path('films/', views.film_list_view),
     path('films/<int:id>/', views.film_detail_view),
     path('director/<int:director_id>/film/', views.director_films),
+    path('films/create/', views.create_films),
+    path('director/create/', views.create_director),
+
 ]
