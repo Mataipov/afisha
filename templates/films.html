@@ -1,16 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{##}
-{#    <a href="/films/">#}
-{#    <button>ALL</button>#}
-{#    </a>#}
-{##}
-{#{% for director in directories %}#}
-{#    <a href="director/{{ director.id }}/film/">#}
-{#    <button>{{ director.name }}</button>#}
-{#    </a>#}
-{#{% endfor %}#}
    <h1>All films</h1>
     {% for film in film_list %}
         <a href="/films/{{ film.id }}/">
@@ -20,4 +10,18 @@
         <p>Rating: {{ film.rating }}</p>
 
     {% endfor %}
+
+
+        <nav aria-label="Page navigation example">
+        <ul class="pagination">
+        <li class="page-item {% if page == 1 %}disabled{% endif %}"><a class="page-link" href="/films/?page={{ prev_page }}">Previous</a></li>
+            {% for button in buttons %}
+                <li class="page-item {% if button == page %}active{% endif %}">
+                    <a class="page-link"
+                       href="/films/?page={{ button }}">
+                        {{ button }}</a></li>
+            {% endfor %}
+           <li class="page-item {% if page == pages_amount %}disabled{% endif %}"><a class="page-link" href="/films/?page={{ next_page }}">Next</a></li>
+        </ul>
+    </nav>
 {% endblock %}

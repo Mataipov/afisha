@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Searched films</h1>
+   {% for film in film_list.all %}
+        <a href="/films/{{ film.id }}/">
+            <h3>Title: {{ film.title }}</h3>
+        </a>
+        <p>Author: {{ film.author }}</p>
+        <p>Rating: {{ film.rating }}</p>
+   {% endfor %}
+{% endblock %}
